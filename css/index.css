@@ -1,0 +1,220 @@
+html{font-size: 20px}
+.container,.testA{
+    background: #575EB8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+.logo{
+    margin-top: 27px;
+    margin-left: 27px;
+    width: 124px;
+    height: 32px;
+}
+.logo img{width: 100%}
+.main{
+    padding: 175px 17px 0 17px;
+    position: relative;
+}
+.main .wx_pic{
+    width: 139px;
+    height: 139px;
+    position: absolute;
+    left: 75px;
+    top: 135px;
+}
+.main .name{
+    width: 171px;
+    height: 58px;
+    position: absolute;
+    top: 168px;
+    left: 225px;
+}
+.main .name span{
+    color: #2A3281;
+    font-size: 16.67px;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+.begin{
+    width: 230px;
+    margin: 70px auto;
+}
+.btns{
+    width: 230px;
+    margin: 43px auto 70px;
+}
+.btns a:nth-child(2){margin-top: 30px}
+.begin a,.btns a{
+    display:block;
+    width: 225px;
+    height: 70px;
+    border: 3px solid #323876;
+    border-radius: 40px;
+    color: #fff;
+    line-height: 70px;
+    text-align: center;
+    background: #EE7C4A;
+    font-size: 33.33px;
+}
+/*旋转的马路*/
+.scrollRoad {
+    position: absolute;
+    top: 862px;
+    width: 100%;
+}
+.road{
+    position: absolute;
+    top: 25px;
+    width: 100%;
+}
+.road img{
+    animation: zhuan 30s linear infinite;
+}
+@keyframes zhuan {
+    0%{transform: rotate(0deg);-webkit-transform: rotate(0deg)}
+    100%{transform: rotate(360deg);-webkit-transform: rotate(360deg)}
+}
+.car{
+    position: absolute;
+    top: -5px;
+    left: 110px;
+}
+/*答题界面*/
+.testA .modal{
+    width: 536px;
+    height: 727px;
+    background: #FDC333;
+    margin: 145px 53px 0 53px;
+    border-radius: 20px;
+    padding: 50px 35px 15px 35px;
+    display: none;
+}
+.testA .modal.active{display: block}
+.modal .question{
+    font-size: 33.33px;
+    color: #11379A;
+}
+.modal li{
+    font-size: 25px;
+    color: #11379A;
+    padding-top: 45px;
+}
+.modal li span{
+    width: 85%;
+    display: inline-block;
+    font-size: 25px;
+    color: #11379A;
+}
+.modal li .check-box{
+    background: url("../images/kuang.png") no-repeat;
+    background-size: 100% 100%;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.modal li .check-box.active{
+    background: url("../images/kuang_f.png") no-repeat;
+}
+.modal .next{
+    display: block;
+    width: 225px;
+    height: 75px;
+    margin: 117px auto 40px;
+    background: url("../images/next.png") no-repeat;
+}
+.modal .next.active{
+    background: url("../images/next_f.png") no-repeat;
+}
+.modal .result{
+    background: url("../images/chakan.png") no-repeat !important;
+}
+.modal .result.active{
+    background: url("../images/chakan_f.png") no-repeat !important;
+}
+.modal .tip{
+    font-size: 20.83px;
+    color: #B56E3A;
+    width: 155px;
+    margin: 0 auto;
+}
+.modal .picture{
+    display: block;
+    width: 119px;
+    height: 119px;
+    margin:  0 auto;
+}
+.testA-logo{
+    width: 124px;
+    height: 32px;
+    margin: 85px auto 20px;
+}
+/*赢取油卡*/
+.chenghao,.detail{
+    background: #575EB8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+.footer{
+    width: 222px;
+    height: 55px;
+    margin: 65px auto 15px;
+}
+.detail .main3{
+    width: 575px;
+    height: 870px;
+    background: #ABAFDC;
+    margin: 45px 35px 0 35px;
+    padding: 40px 45px 28px 15px;
+}
+.detail .main3 .form{
+    width: 615px;
+    height: 500px;
+    margin-left: -35px;
+}
+.detail .main3 .form form{
+    position: absolute;
+    top: 260px;
+    left: 220px;
+}
+.detail .main3 .form form label{
+    font-size: 33.33px;
+    color: #000000;
+    display: block;
+}
+.detail .main3 .form form input{
+    width: 365px;
+    height: 40px;
+    padding-left: 10px;
+    border: 3px solid #000000;
+    background: transparent;
+}
+.detail .main3 .exp{
+    font-size: 16.67px;
+    color: #000000;
+    margin-top: 13px;
+}
+.detail .main3 .form form button{
+    width: 190px;
+    height: 55px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    border: 3px solid #21327A;
+    background: #EE7C4A;
+    border-radius: 30px;
+    margin-left: 100px;
+    margin-top: 20px;
+    font-size: 29.17px;
+}
+.condition p{
+    font-size: 16.67px;
+    padding-top: 5px;
+}
+

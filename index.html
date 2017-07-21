@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maxmim-scale=1.1,user-scalable=no">
+    <!-- 苹果用户的属性 -->
+    <meta name="apple-mobile-web-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/index1.css"/>
+    <title></title>
+    <script>
+        !function(win) {
+            function resize() {
+                var domWidth = domEle.getBoundingClientRect().width;
+                if(domWidth / v > 540){
+                    domWidth = 540 * v;
+                }
+                win.rem = domWidth / 16;
+                domEle.style.fontSize = win.rem + "px";
+            }
+            var v, initial_scale, timeCode, dom = win.document, domEle = dom.documentElement, viewport = dom.querySelector('meta[name="viewport"]'), flexible = dom.querySelector('meta[name="flexible"]');
+            if (viewport) {
+                //viewport：<meta name="viewport"content="initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5,user-scalable=no,minimal-ui"/>
+                var o = viewport.getAttribute("content").match(/initial\-scale=(["']?)([\d\.]+)\1?/);
+                if(o){
+                    initial_scale = parseFloat(o[2]);
+                    v = parseInt(1 / initial_scale);
+                }
+            } else {
+                if (flexible) {
+                    var o = flexible.getAttribute("content").match(/initial\-dpr=(["']?)([\d\.]+)\1?/);
+                    if(o){
+                        v = parseFloat(o[2]);
+                        initial_scale = parseFloat((1 / v).toFixed(2))
+                    }
+                }
+            }
+            if (!v && !initial_scale) {
+                var n = (win.navigator.appVersion.match(/android/gi), win.navigator.appVersion.match(/iphone/gi));
+                v = win.devicePixelRatio;
+                v = n ? v >= 3 ? 3 : v >= 2 ? 2 : 1 : 1, initial_scale = 1 / v
+            }
+            //没有viewport标签的情况下
+            if (domEle.setAttribute("data-dpr", v), !viewport) {
+                if (viewport = dom.createElement("meta"), viewport.setAttribute("name", "viewport"), viewport.setAttribute("content", "initial-scale=" + initial_scale + ", maximum-scale=" + initial_scale + ", minimum-scale=" + initial_scale + ", user-scalable=no"), domEle.firstElementChild) {
+                    domEle.firstElementChild.appendChild(viewport)
+                } else {
+                    var m = dom.createElement("div");
+                    m.appendChild(viewport), dom.write(m.innerHTML)
+                }
+            }
+            win.dpr = v;
+            win.addEventListener("resize", function() {
+                clearTimeout(timeCode), timeCode = setTimeout(resize, 300)
+            }, false);
+            win.addEventListener("pageshow", function(b) {
+                b.persisted && (clearTimeout(timeCode), timeCode = setTimeout(resize, 300))
+            }, false);
+            /* 个人觉得没必要完成后就把body的字体设置为12
+             "complete" === dom.readyState ? dom.body.style.fontSize = 12 * v + "px" : dom.addEventListener("DOMContentLoaded", function() {
+             //dom.body.style.fontSize = 12 * v + "px"
+             }, false);
+             */
+            resize();
+        }(window);
+    </script>
+</head>
+<body>
+<!--开始界面-->
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo"/>
+        </div>
+        <div class="main">
+            <div class="banner">
+                <img src="images/banner.png"/>
+            </div>
+            <div class="wx_pic">
+                <img src="images/wx_pic.png" alt="touxiang"/>
+            </div>
+            <div class="name">
+                <img src="images/name.png" alt="name"/>
+                <span>显示微信名称</span>
+            </div>
+        </div>
+        <div class="begin">
+            <a href="#">开始测试</a>
+        </div>
+        <div class="scrollRoad">
+            <div class="road">
+                <img src="images/road.png" alt="road"/>
+            </div>
+            <div class="car">
+                <img src="images/car.png" alt="car"/>
+            </div>
+        </div>
+    </div>
+<!--答题界面-->
+<!--A卷-->
+    <div class="testA" style="display: none">
+        <!--第一题-->
+        <div class="modal">
+            <p class="question">你最喜欢穿什么鞋子开车？</p>
+            <ul>
+                <li><a href="#" class="check-box"></a>12cm的恨天高，就问你们慌不慌</li>
+                <li><a href="#" class="check-box"></a>祖传人字拖</li>
+                <li><a href="#" class="check-box"></a>我爱光脚开，放飞自我</li>
+                <li><a href="#" class="check-box"></a>某N牌限量款运动鞋</li>
+            </ul>
+            <a href="#" class="next"></a>
+            <p class="tip">第1题/共10题</p>
+        </div>
+        <!--第二题-->
+        <div class="modal">
+            <p class="question">下列标志表示什么意思？？</p>
+            <span class="picture"><img src="images/tubiao.png" alt="tubiao"/></span>
+            <ul>
+                <li style="padding-top: 0"><a href="#" class="check-box"></a>禁止停车</li>
+                <li><a href="#" class="check-box"></a>禁止吸烟</li>
+                <li><a href="#" class="check-box"></a>禁止对随地大小便</li>
+                <li><a href="#" class="check-box"></a>禁止游泳</li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 0.5rem"></a>
+            <p class="tip">第2题/共10题</p>
+        </div>
+        <!--第三题-->
+        <div class="modal">
+            <p class="question">你属于下列哪种人群？</p>
+            <ul>
+                <li><a href="#" class="check-box"></a>路怒族，谁怼我我怼谁</li>
+                <li><a href="#" class="check-box"></a>飙车族，哪里都是我的个人赛道</li>
+                <li><a href="#" class="check-box"></a>秋名山车神，能超我车的算我输</li>
+                <li><a href="#" class="check-box"></a>老司机，别解释了快上车</li>
+            </ul>
+            <a href="#" class="next"></a>
+            <p class="tip">第3题/共10题</p>
+        </div>
+        <!--第四题-->
+        <div class="modal">
+            <p class="question">请说出这个标志的含义？</p>
+            <span class="picture" style="height: 3.3rem;width:1.875rem"><img src="images/tubiao2.png" alt="tubiao"/></span>
+            <ul>
+                <li style="padding-top: 0"><a href="#" class="check-box"></a>允许直行</li>
+                <li><a href="#" class="check-box"></a>不允许直行</li>
+                <li><a href="#" class="check-box"></a>直行单行路</li>
+                <li><a href="#" class="check-box"></a>直行车让行</li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 0.5rem"></a>
+            <p class="tip">第4题/共10题</p>
+        </div>
+        <!--第五题-->
+        <div class="modal">
+            <p class="question">前方有个大妈正意欲碰瓷，你该
+                怎么办？</p>
+            <ul>
+                <li><a href="#" class="check-box" style="vertical-align: top"></a><span>一脚油门送你上天，20年后我还是条汉子</span></li>
+                <li><a href="#" class="check-box" style="vertical-align: top"></a><span>大声念出3遍咒语：你看不见我！</span></li>
+                <li><a href="#" class="check-box" style="vertical-align: top"></a><span>刹车熄火，打开手机，加个滤镜送他上热门!深呼吸并拨打110</span></li>
+                <li><a href="#" class="check-box" style="vertical-align: top"></a><span>以我的车技，能碰到我的车算我输</span></li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 1rem"></a>
+            <p class="tip">第5题/共10题</p>
+        </div>
+        <!--第六题-->
+        <div class="modal">
+            <p class="question">拥挤路段遇其他车辆强行插队，
+                你应怎样做？</p>
+            <ul>
+                <li><a href="#" class="check-box"></a><span>我XXXX，怼死你</span></li>
+                <li><a href="#" class="check-box" style="vertical-align: top"></a><span>利落的一个白眼，然后默默地踩下刹车</span></li>
+                <li><a href="#" class="check-box"></a><span>你先过，一会看我怎么弄死你^_^</span></li>
+                <li><a href="#" class="check-box"></a><span>那我也要插旁边人的队，扯平啦</span></li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 1.5rem"></a>
+            <p class="tip">第6题/共10题</p>
+        </div>
+        <!--第七题-->
+        <div class="modal">
+            <p class="question">这个地面标记表示什么？</p>
+            <span class="picture" style="height: 3.3rem;width: 1.875rem"><img src="images/tubiao3.png" alt="tubiao"/></span>
+            <ul>
+                <li style="padding-top: 0"><a href="#" class="check-box"></a>人行横道预告</li>
+                <li><a href="#" class="check-box"></a>菱形</li>
+                <li><a href="#" class="check-box"></a>平行四边形</li>
+                <li><a href="#" class="check-box"></a>魔法阵</li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 0.5rem"></a>
+            <p class="tip">第7题/共10题</p>
+        </div>
+        <!--第八题-->
+        <div class="modal">
+            <p class="question">这个标志表示什么含义?</p>
+            <span class="picture" style="height: 3.05rem;width: 8.05rem"><img src="images/tubiao4.png" alt="tubiao"/></span>
+            <ul>
+                <li style="padding-top: 0"><a href="#" class="check-box"></a>告诉我们前面的路叫复兴路</li>
+                <li><a href="#" class="check-box"></a>告诉我们我们朝北走</li>
+                <li><a href="#" class="check-box"></a>我不识字怪我咯</li>
+                <li><a href="#" class="check-box"></a>环行交叉路口预告</li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 0.5rem"></a>
+            <p class="tip">第8题/共10题</p>
+        </div>
+        <!--第九题-->
+        <div class="modal">
+            <p class="question">在高速公路行驶，下列做法正确的是？</p>
+            <ul>
+                <li><a href="#" class="check-box"></a><span>可在减速/加速车道上超车、停车</span></li>
+                <li><a href="#" class="check-box" style="vertical-align: top"></a><span>非紧急情况时不得在应急车道行驶或者停车</span></li>
+                <li><a href="#" class="check-box"></a><span>可在紧急停车带停车装卸货物</span></li>
+                <li><a href="#" class="check-box"></a><span>可在路肩停车欣赏风景</span></li>
+            </ul>
+            <a href="#" class="next" style="margin-top: 1.5rem"></a>
+            <p class="tip">第9题/共10题</p>
+        </div>
+        <!--第十题-->
+        <div class="modal">
+            <p class="question">这个标志表示什么含义?</p>
+            <span class="picture" style="height: 3.15rem;width: 7.05rem"><img src="images/tubiao5.png" alt="tubiao"/></span>
+            <ul>
+                <li style="padding-top: 0"><a href="#" class="check-box"></a>建议速度30km/h</li>
+                <li><a href="#" class="check-box"></a>最低速度30km/h</li>
+                <li><a href="#" class="check-box"></a>最高速度30km/h</li>
+                <li><a href="#" class="check-box"></a>最高速度30km/h</li>
+            </ul>
+            <a href="#" class="next result" style="margin-top: 0.5rem"></a>
+            <p class="tip">第10题/共10题</p>
+        </div>
+        <!--logo-->
+        <div class="testA-logo">
+            <img src="images/logo2.png" alt="logo"/>
+        </div>
+    </div>
+<!--查看结果-->
+    <div class="chenghao">
+        <div class="main">
+            <div class="banner">
+                <img src="images/banner2.png"/>
+            </div>
+            <div class="wx_pic">
+                <img src="images/wx_pic.png" alt="touxiang"/>
+            </div>
+            <div class="name">
+                <img src="images/name.png" alt="name"/>
+                <span>显示微信名称</span>
+            </div>
+        </div>
+        <div class="btns">
+            <a href="#">参与赢油卡</a>
+            <a href="#" class="xiangqing">了解详情</a>
+        </div>
+        <div class="footer">
+            <img src="images/footer.png" alt=""/>
+        </div>
+    </div>
+<!--报名详情-->
+    <div class="detail">
+        <div class="main3">
+            <div class="form">
+                <img src="images/form.png" alt="banner"/>
+                <form action="#">
+                    <div class="name">
+                        <label>ID/姓名</label>
+                        <input type="text"/>
+                    </div>
+                    <div class="tel">
+                        <label>TEL/手机号码</label>
+                        <input type="text"/>
+                    </div>
+                    <div class="exp">
+                        报名成功后可于2017年4月16日下午12:30前往东方
+                        汽车新城试驾场进行车技比拼,需携带本人驾照哦！
+                    </div>
+                    <button>提交报名</button>
+                </form>
+            </div>
+            <div class="condition">
+                <p>活动时间：4月16日中午12:30于无锡东方汽车新城试驾场进行签到</p>
+                <p>参与方式：填写姓名及手机号即可参与活动报名</p>
+                <p>活动内容：采用计时赛的方式，所有选手必须依次完成S弯和倒车入库</p>
+                <p>两项挑战，每人只有一次机会，用时最短者胜出</p>
+                <p>活动奖品：</p>
+                <p>一等奖1名：1000元油卡</p>
+                <p>二等奖3名：500元油卡</p>
+                <p>三等奖5名：200元油卡</p>
+                <p>优胜奖10名：100元油卡</p>
+                <p>纪念品，每位参赛选手一份</p>
+                <p>参与须知：本活动参与对象为驾龄2年以上女性司机，请携带好本人的
+                    驾照等有效证件前来参与活动。</p>
+            </div>
+        </div>
+        <div class="footer">
+            <img src="images/footer.png" alt=""/>
+        </div>
+    </div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function(){
+        $('.begin a').click(function(){
+            $('.container').hide();
+            $('.testA').show();
+            $('.modal:first').addClass('active');
+        });
+        $('.check-box').on('click', function () {
+            $(this).addClass('active').parent().siblings().children('.check-box').removeClass('active');
+            $(this).parent().parent().next('.next').addClass('active').click(function(){
+//                console.log(this);
+                $(this).parent().removeClass('active').next().addClass('active');
+            });
+            //        查看结果按钮事件
+            $(this).parent().parent().next('.result').addClass('active').click(function(){
+//                console.log(this);
+                $(this).parent().removeClass('active');
+                $('.testA').hide();
+                $('.chenghao').show();
+            });
+        });
+//    了解详情
+        $('.xiangqing').click(function(){
+            $('.detail').show();
+            $('.chenghao').hide();
+        });
+    });
+
+</script>
+</body>
+</html>
